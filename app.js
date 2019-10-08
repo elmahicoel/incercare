@@ -119,3 +119,22 @@ if (element) {
 		}
 	})
 }
+// remove product from feed
+const element = document.querySelector('#js-admin-product-list');
+if (element) {
+	element.addEventListener('click', (evt) => {
+		if (evt.target.localName === "button") {
+			const targetId = evt.target.id;
+			fetch(`https://mihaiproiect.firebaseio.com/${targetId}.json`, {
+				method: 'DELETE',
+				headers: {
+					'Content-type': 'application/json'
+				}
+			}).then(res => {
+				fetchedData.then(data => ui.createAdminProductList(data));
+				return res.json()
+			})
+				.catch(err => console.log(err));
+		}
+	})
+}
