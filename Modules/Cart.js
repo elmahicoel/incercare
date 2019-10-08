@@ -142,7 +142,7 @@ export default class Cart {
 				    
 					<li class="d-flex" data-product-id="${product.Id}">
 						<div class="width-20"><a href="/details.html?id=${product.Id}">${product.Details.title}</a></div>
-						<div class="width-20">${product.Details.price}$</div>
+						<div class="width-20">${product.Details.price}</div>
 						<div class="width-20"><span class="js-minus">-</span>${product.Quantity}<span class="js-plus">+</span></div>
 						<div class="width-20">${product.Quantity * product.Details.price}$</div>
 						<div class="width-20" class="js-remove">X</div>
