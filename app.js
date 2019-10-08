@@ -40,9 +40,8 @@ if (queryString.has('id')) {
 	fetchedData.then(data => ui.createProductLink(data));
 
 	fetchedData.then(data => ui.createAdminProductList(data));
-	 if (window.location.href.indexOf('admin-details') > -1) {
-		fetchedData.then(data => ui.createProducAdmintLink(data));
-		
+	if (window.location.href.indexOf('admin') > -1) {
+	 fetchedData.then(data => ui.createProducAdmintLink(data));
 	}
 }
 
