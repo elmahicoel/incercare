@@ -43,7 +43,8 @@ if (queryString.has('id')) {
 	 if (window.location.href.indexOf('admin-details') > -1) {
 		fetchedData.then(data => ui.createProducAdmintLink(data));
 		
-	}}
+	}
+}
 
 // call static method when the the page loads
 Cart.updateCartCount();
