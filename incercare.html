@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    async function add(event){
+        var iEdit;
+				event.preventDefault();
+				var obj={
+					name:document.querySelector("[name='name']").value,
+					link:document.querySelector("[name='link']").value,
+					description:document.querySelector("[name='description']").value,
+					tags:document.querySelector("[name='tags']").value.split(/[\n\r]+/g),
+					complexity:document.querySelector("[name='complexity']").value
+				}
+				if(iEdit!==undefined){
+					//list[iEdit] = obj;
+					
+					var response = await fetch(`https://mihai.firebaseio.com/${iEdit}.json`,{
+						method:"put",
+						body:JSON.stringify(obj)
+					});
+					
+				}else{
+					
+					var response = await fetch(`https://mihai.firebaseio.com/.json`,{
+						method:"post",
+						body:JSON.stringify(obj)
+					});
+					//list.push(obj);
+				}
+				
+				
+			}
+</script>
+<body>
+        <input type="button" value="Add" />
+        <form id="form" class="hidden" onsubmit="add(event);">
+                <fieldset>
+                    <legend>Add new usefull links</legend>
+                    <div class="formControl">
+                        <label for="name">Name:</label>
+                        <input id="name" type="text" name="name"/>
+                        
+                        <label for="link">Link</label>
+                        <input id="link" type="text" name="link"/>
+                        
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"></textarea>
+                        
+                        <label for="tags">Tags</label>
+                        <textarea id="tags" name="tags"></textarea>
+                        
+                        <label for="complexity">Complexity</label>
+                        <select id="complexity" name="complexity">
+                            <option value="0">V Easy</option>
+                            <option value="1">Easy</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Hard</option>
+                            <option value="4">V Hard</option>
+                        </select>
+                        <div><input type="submit" value="Save"/>
+                        <input type="button" value="Cancel" onclick="showTable();"/></div>
+                    </div>
+                </fieldset>
+            </form>
+    
+</body>
+</html>
