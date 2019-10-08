@@ -95,28 +95,9 @@ if (cancel) {
 const editProduct = document.querySelector('.details-save');
 if (editProduct) {
 	editProduct.addEventListener('click', () => {
-		http.put(`https://mihai12a.firebaseio.com/${queryString.get('id')}.json`)
+		http.put(`https://mihaiproiect.firebaseio.com/${queryString.get('id')}.json`)
 			.then(r => console.log(r))
 			.catch(err => console.log(err));
-	})
-}
-// remove product from feed
-const element = document.querySelector('#js-admin-product-list');
-if (element) {
-	element.addEventListener('click', (evt) => {
-		if (evt.target.localName === "button") {
-			const targetId = evt.target.id;
-			fetch(`https://mihaiproiect.firebaseio.com/${targetId}.json`, {
-				method: 'DELETE',
-				headers: {
-					'Content-type': 'application/json'
-				}
-			}).then(res => {
-				fetchedData.then(data => ui.createAdminProductList(data));
-				return res.json()
-			})
-				.catch(err => console.log(err));
-		}
 	})
 }
 // remove product from feed
