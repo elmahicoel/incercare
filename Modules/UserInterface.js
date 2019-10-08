@@ -25,7 +25,7 @@ export default class UserInterface {
 
 	createProductLink(data) {
 		for (let i = 0; i < data.length; i++) {
-			if(data[i]===null)continue;
+			if(data[i]=== null)continue;
 			const detailsBtn = document.querySelector(`#detaild-${i}`);
 			if (detailsBtn) {
 				detailsBtn.addEventListener('click', () => {
